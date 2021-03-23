@@ -1,0 +1,22 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:attribute name="variant" type="String" default="linear"/>
+    <aura:attribute name="hideUpdateButton" type="Boolean" default="true"/>
+     <aura:attribute name="fields" type="String[]" default="['Subject','AccountId','Status','Type','ContactId','OwnerId']" />
+    <div class="slds-page-header slds-page-header__row slds-page-header__col-title slds-media slds-media__figure">Case
+    <span class="slds-icon_container slds-icon-standard-case">
+    </span>
+    </div>
+    <lightning:path aura:id="path" recordId="{!v.recordId}"
+        variant="{!v.variant}"
+        hideUpdateButton="{!v.hideUpdateButton}"
+        onselect="{!c.handleSelect}"
+    />
+    <lightning:recordForm
+        aura:id="myRecordForm"
+        recordId="{!v.recordId}"
+        objectApiName="Case"
+        fields="{!v.fields}"
+        columns="1"
+        mode="edit"
+        onsubmit="{!c.handleSubmit}" />
+</aura:component>
